@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Scene Generator</title>
+    <!-- Load Bootstrap CSS from CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+</head>
+
+<body class="bg-light">
+
+    <!-- Optional Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Random Scene Generator</a>
+        </div>
+    </nav>
+
+    <div class="container my-4">
+        <h1 class="display-4 text-center mb-4">Random Scene Generator</h1>
+        <p class="text-muted text-center mb-5">
+            Use this tool to create compelling scenes with varied locations, conflicts,
+            and storytelling patterns—complete with a first-scene hook. Protagonist will
+            always be included; other viewpoints are optional.
+        </p>
+
+        <!-- Row: Add Locations + Generate / Clear / Export -->
+        <div class="row g-4">
+            <!-- Column: Add Location Section -->
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Add a New Location</h5>
+                        <p class="card-text small text-muted">
+                            Enter a location name and click "Add" to include it in the generator.
+                        </p>
+                        <div class="mb-3">
+                            <label for="locationInput" class="form-label fw-semibold">Location Name</label>
+                            <input id="locationInput" type="text" class="form-control"
+                                placeholder="e.g., Haunted Castle" />
+                        </div>
+                        <button id="addLocationBtn" class="btn btn-success">Add Location</button>
+
+                        <hr />
+                        <h6>Current Locations:</h6>
+                        <ul id="locationList" class="list-unstyled mb-0"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column: Viewpoint Toggles -->
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Choose Viewpoints</h5>
+                        <p class="card-text small text-muted">
+                            Protagonist is always included. Toggle others on/off.
+                        </p>
+                        <!-- Protagonist is implicitly always included, but we show it as disabled or just text -->
+                        <div class="mb-2">
+                            <label class="form-check-label fw-semibold">Protagonist (always on)</label>
+                            <!-- Could be a disabled checkbox or no checkbox at all. -->
+                        </div>
+                        <!-- Checkboxes for other viewpoints -->
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="viewAntagonist" checked />
+                            <label class="form-check-label" for="viewAntagonist">
+                                Antagonist
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="viewSupportingAlly" checked />
+                            <label class="form-check-label" for="viewSupportingAlly">
+                                Supporting Ally
+                            </label>
+                        </div>
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="viewNeutralObserver" checked />
+                            <label class="form-check-label" for="viewNeutralObserver">
+                                Neutral Observer
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Column: Scene Generation Controls -->
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Generate Scenes</h5>
+                        <p class="card-text small text-muted">
+                            Set how many scenes you want, then generate or clear data.
+                        </p>
+                        <div class="mb-3">
+                            <label for="numScenes" class="form-label fw-semibold">Number of Scenes</label>
+                            <input id="numScenes" type="number" class="form-control" min="1" max="50" value="5" />
+                        </div>
+                        <div>
+                            <button id="generateBtn" class="btn btn-primary me-2 mb-2">
+                                Generate Scenes
+                            </button>
+                            <button id="clearDataBtn" class="btn btn-secondary me-2 mb-2">
+                                Clear Data
+                            </button>
+                            <button id="exportCsvBtn" class="btn btn-info mb-2">
+                                Save to CSV
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /row -->
+
+        <hr class="my-5" />
+
+        <!-- Scenes Section -->
+        <h2 class="mb-3">Generated Scenes</h2>
+        <ul id="sceneList" class="list-unstyled"></ul>
+    </div><!-- /container -->
+
+    <footer class="bg-dark text-light text-center py-3 mt-5">
+        <p class="mb-0">
+            &copy; 2025 Scene Generator. All rights reserved.
+        </p>
+    </footer>
+
+    <!-- Optional Bootstrap JS (for certain components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+    <!-- Link to your external script -->
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
